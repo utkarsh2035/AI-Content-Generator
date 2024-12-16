@@ -31,15 +31,9 @@ const CreateNewContent = (props: PROPS) => {
   const [loading, setLoading] = useState(false);
   const [aiOutput, setAIOutput] = useState('');
   const { user } = useUser();
-  const { totalUsage, setTotalUsage } = useContext(TotalUsageContext);
   const router = useRouter();
 
   const GenerateAIContent = async (formData: any) => {
-    if (totalUsage >= 10000) {
-      console.log('please upgrade');
-      router.push('/dashboard/billing');
-      return;
-    }
     setLoading(true);
 
     const selectedPrompt = selectedTemplate?.aiPrompt;
